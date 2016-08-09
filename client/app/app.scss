@@ -12,15 +12,53 @@ $fa-font-path: "../bower_components/font-awesome/fonts";
   padding: 0.2em 0;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+#splash {
+	height: 100vh;
+	width: 100vw;
+}
+#splash-bg {
+	background-image: url("/assets/images/newton.jpeg");
+	height: 100vh;
+	width: 100vw;
+	position: absolute;
+	filter: blur(4px) brightness(70%);
+	top: 0;
+	left: 0;
+}
+
+.splash-foreground {
+	z-index: 1;
+	width: 100%;
+	border-radius: 15px;
+}
+
+.login-input {
+	border-radius: 3px;
+	padding-left: 5%;
+	height: 100%;
+	border-style: hidden;
+	font-size: x-large;
+}
+
+.banner {
+	text-align: center;
+}
+
+.small-btn {
+	width: 80%;
 }
 
 // Component styles are injected through grunt
 /* inject:scss */
-@import 'admin/admin.scss';
-@import 'main/main.scss';
+
+@import 'admin/admin';
+
+@import 'home/home';
+
+@import 'main/main';
+
+@import '../components/footer/footer';
+
+@import '../components/navbar/navbar';
+
 /* endinject */

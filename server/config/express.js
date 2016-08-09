@@ -18,6 +18,9 @@ import config from './environment';
 import passport from 'passport';
 import session from 'express-session';
 import sqldb from '../sqldb';
+import pg from 'pg';
+import pgSimple from 'connect-pg-simple'
+const pgSession = pgSimple(session);
 import expressSequelizeSession from 'express-sequelize-session';
 var Store = expressSequelizeSession(session.Store);
 
@@ -53,7 +56,10 @@ export default function(app) {
     secret: config.secrets.session,
     saveUninitialized: true,
     resave: false,
-    store: new Store(sqldb.sequelize)
+    store: new pgSession({
+  		pg: pg,
+  		conString: config.sequelize.uri
+  	})
   }));
 
   /**

@@ -14,7 +14,9 @@ var db = {
 };
 
 // Insert models below
-db.Thing = db.sequelize.import('../api/thing/thing.model');
+db.Year = db.sequelize.import('../api/year/year.model');
+db.Player = db.sequelize.import('../api/player/player.model');
 db.User = db.sequelize.import('../api/user/user.model');
-
+db.Player.hasMany(db.Year);
+db.Year.belongsTo(db.Player);
 module.exports = db;

@@ -2,37 +2,47 @@
 
 (function() {
 
-  class MainController {
+	class MainController {
 
-    constructor($http) {
-      this.$http = $http;
-      this.awesomeThings = [];
-    }
+		constructor(Auth, $state, $mdMedia) {
+			this.user = {};
+			this.$mdMedia = $mdMedia;
+			this.errors = {};
+			this.submitted = false;
 
-    $onInit() {
-      this.$http.get('/api/things')
-        .then(response => {
-          this.awesomeThings = response.data;
-        });
-    }
+			this.Auth = Auth;
+			this.$state = $state;
+		}
 
-    addThing() {
-      if (this.newThing) {
-        this.$http.post('/api/things', {
-          name: this.newThing
-        });
-        this.newThing = '';
-      }
-    }
+		login() {
+			this.submitted = true;
+			this.Auth.login({
+				email: this.user.email,
+				password: this.user.password
+			})
+			.then(() => this.$state.go('home'))
+			.catch(err => {
+				this.errors.other = err.message; 
+			})
+		}
 
-    deleteThing(thing) {
-      this.$http.delete('/api/things/' + thing._id);
-    }
-  }
+		signup() {
+			this.submitted = true;
+			this.Auth.createUser({
+				email: this.user.email,
+				password: this.user.password
+			})
+			.then(() => this.$state.go('home'))
+			.catch(err => {
+				err = err.data;
+				this.errors = {};	
+			});
+		}
+	}
 
-  angular.module('ffmlApp')
-    .component('main', {
-      templateUrl: 'app/main/main.html',
-      controller: MainController
-    });
+	angular.module('ffmlApp')
+	.component('main', {
+		templateUrl: 'app/main/main.html',
+		controller: MainController
+	});
 })();

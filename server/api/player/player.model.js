@@ -1,7 +1,7 @@
 'use strict';
 
 export default function(sequelize, DataTypes) {
-  return sequelize.define('Thing', {
+  return sequelize.define('Player', {
     _id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -9,7 +9,8 @@ export default function(sequelize, DataTypes) {
       autoIncrement: true
     },
     name: DataTypes.STRING,
-    info: DataTypes.STRING,
-    active: DataTypes.BOOLEAN
+    name_info: DataTypes.STRING,
+    position: DataTypes.STRING,
+    birthyear: DataTypes.INTEGER
   });
 }

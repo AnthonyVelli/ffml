@@ -1,18 +1,19 @@
-<header class="hero-unit" id="banner">
-  <div class="container">
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">Kick-start your next web app with Angular Fullstack</p>
-    <img src="assets/images/yeoman.png" alt="I'm Yeoman">
-  </div>
-</header>
-
-<div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1 class="page-header">Features:</h1>
-      <ul class="nav nav-tabs nav-stacked col-md-4 col-lg-4 col-sm-6" ng-repeat="thing in $ctrl.awesomeThings">
-        <li><a href="#" uib-tooltip="{{thing.info}}">{{thing.name}}</a></li>
-      </ul>
-    </div>
-  </div>
+<div layout='column' id="splash" layout-align="end center">
+	<div flex='20' layout="row" layout-align="center center" class="splash-foreground banner">
+		<h1 flex='50' md-colors="{color: 'background'}">Fantasy Football By Computers</h1>
+	</div>
+	<div flex='45' layout="column" layout-margin class="splash-foreground">
+		<div flex-gt-sm='10' flex='15' layout='row' layout-align="center center">
+			<input flex='80' flex-gt-sm='20' class='login-input' ng-model="$ctrl.user.email" placeholder="Email" type="email">
+		</div>
+		<div flex-gt-sm='10' flex='15' layout='row' layout-align="center center">
+			<input flex='80' flex-gt-sm='20' class='login-input' ng-model="$ctrl.user.password" placeholder="Password" type="password">
+		</div>
+		<div flex='30' layout="column" layout-gt-sm="row" layout-align='center center' layout-align-gt-sm='center start'>
+				<md-button class="md-raised md-primary" flex-gt-sm="10"  ng-class="{'small-btn': !$ctrl.$mdMedia('gt-sm')}" ng-click="$ctrl.login()">Login</md-button>
+				<md-button class="md-raised md-primary" flex-gt-sm="10" ng-class="{'small-btn': !$ctrl.$mdMedia('gt-sm')}" ng-click="$ctrl.signup()">Signup</md-button>
+		</div>
+	</div>
+</div>
+<div id="splash-bg">
 </div>

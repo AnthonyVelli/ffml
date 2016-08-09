@@ -368,7 +368,7 @@ gulp.task('serve', cb => {
     runSequence(['clean:tmp', 'constant', 'env:all'],
         ['lint:scripts', 'inject'],
         ['wiredep:client'],
-        ['transpile:client', 'styles'],
+        ['transpile:client', 'build:imagesTMP', 'styles'],
         ['start:server', 'start:client'],
         'watch',
         cb);
@@ -546,6 +546,11 @@ gulp.task('build:images', () => {
             merge: true
         }))
         .pipe(gulp.dest(`${paths.dist}/${clientPath}/assets`));
+});
+
+gulp.task('build:imagesTMP', () => {
+    return gulp.src(paths.client.images)
+        .pipe(gulp.dest(`.tmp/assets/images`))
 });
 
 gulp.task('copy:extras', () => {

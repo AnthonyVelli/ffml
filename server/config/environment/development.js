@@ -6,17 +6,16 @@ module.exports = {
 
   // Sequelize connection opions
   sequelize: {
-    uri: 'sqlite://',
-    options: {
-      logging: false,
-      storage: 'dev.sqlite',
-      define: {
-        timestamps: false
-      }
-    }
+  	uri: 'postgres://user1:user1@localhost/ffml',
+  	options: {
+  		dialect: 'postgres',
+  		protocol: 'postgres',
+  		port: 5432,
+  		logging: false
+  	}
   },
 
   // Seed database on startup
-  seedDB: true
+  seedDB: false
 
 };
